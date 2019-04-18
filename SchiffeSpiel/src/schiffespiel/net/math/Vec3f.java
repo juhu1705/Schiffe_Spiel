@@ -25,4 +25,14 @@ public class Vec3f {
 	public float getLength() {
 		return (float)Math.sqrt(x * x + y * y + z * z);
 	}
+	
+	public Vec3f normalize()	{
+		float length = this.getLength();
+		
+		this.x /= length;
+		this.y /= length;
+		this.z /= length;
+		
+		return this;
+	}
 }
