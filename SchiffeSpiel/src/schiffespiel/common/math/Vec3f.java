@@ -1,4 +1,4 @@
-package schiffespiel.net.math;
+package schiffespiel.common.math;
 
 public class Vec3f {
 
