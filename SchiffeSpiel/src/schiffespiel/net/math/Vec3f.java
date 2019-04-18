@@ -21,4 +21,8 @@ public class Vec3f {
 		this.y = y;
 		this.z = z;
 	}
+	
+	public float getLength() {
+		return (float)Math.sqrt(x * x + y * y + z * z);
+	}
 }
