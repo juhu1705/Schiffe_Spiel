@@ -1,7 +1,5 @@
 package schiffespiel.common.util;
 
-import java.util.Random;
-
 /**
  * Eine Klasse mit nützlichen Funktionen
  */
