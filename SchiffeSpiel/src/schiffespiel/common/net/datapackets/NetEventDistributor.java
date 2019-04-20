@@ -4,17 +4,37 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.Map.Entry;
 
 /**
  * Ermöglicht vereinfachte Behandlung von eintreffenden {@link Datapacket Datenpaketen}
+ * Verwaltet {@link NetEventHandler} und die EventQueue
  * 
  * @author Niklas
  */
 public final class NetEventDistributor {
 	
 	private static Map<Method, DatapacketType> eventHandlers = new HashMap<>();
+	
+	private static LinkedList<NetEvent> eventQueue = new LinkedList<>();
+	
+	private static Thread eventRunner;
+	
+	static {
+		NetEventDistributor.eventRunner = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				while (true) {
+					if (!eventQueue.isEmpty()) {
+						NetEvent event = eventQueue.removeFirst();
+						NetEventDistributor.processEvent(event);
+					}
+				}
+			}
+		}, "eventRunner");
+	}
 	
 	
 	/**
@@ -78,20 +98,37 @@ public final class NetEventDistributor {
 	
 	
 	/**
+	 * Fügt ein {@link NetEvent} zur Warteschlange hinzu,
+	 * sodass dieses vom eventRunner-Thread verarbeitet wird, sobald alle
+	 * vorherigen {@link NetEvent NetEvents} verarbeitet wurden
+	 * @param event das hinzuzufügende Event
+	 */
+	public static void addEventToQueue(NetEvent event) {
+		// eventRunner starten, falls noch nicht gestartet
+		if (!NetEventDistributor.eventRunner.isAlive()) NetEventDistributor.eventRunner.start();
+		
+		NetEventDistributor.eventQueue.addLast(event);
+	}
+	
+	
+	/**
 	 * Ruft ein Datenpaket-Event auf
 	 * 
 	 * @param dp Datenpaket
 	 * @param sender Datenpaketsender
 	 */
-	public static void processEvent(Datapacket dp, DatapacketSender sender) {
+	private static void processEvent(NetEvent event) {
+		Datapacket dp = event.getDatapacket();
+		
 		for (Entry<Method, DatapacketType> e : NetEventDistributor.eventHandlers.entrySet()) {
 			if (e.getValue() == dp.getType()) {
 				try {
-					e.getKey().invoke(null, dp.getType().getRequiredValueType().cast(dp.getValue()), sender);
+					e.getKey().invoke(null, dp.getType().getRequiredValueType().cast(dp.getValue()), event.getSender());
 				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException exc) {
 					exc.printStackTrace();
 				}
 			}
 		}
 	}
+	
 }
