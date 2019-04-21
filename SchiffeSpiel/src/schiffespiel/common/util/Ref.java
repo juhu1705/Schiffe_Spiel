@@ -13,7 +13,7 @@ public final class Ref {
 	private Ref() {}
 	
 	/**
-	 * Standard Klassen-ID
+	 * Standard Seriellversion-ID
 	 */
 	public static final long UNIVERSAL_SERIAL_VERSION_UID = -1208340591720468638L;
 	
