@@ -5,7 +5,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-import schiffespiel.common.util.Reference;
+import schiffespiel.common.util.Ref;
 
 /**
  * Repräsentiert ein Datenpaket zum Austausch von Informationen zwischen Client und Server
@@ -13,7 +13,7 @@ import schiffespiel.common.util.Reference;
  */
 public class Datapacket implements Serializable {
 
-	private static final long serialVersionUID = Reference.UNIVERSAL_SERIAL_VERSION_UID;
+	private static final long serialVersionUID = Ref.UNIVERSAL_SERIAL_VERSION_UID;
 	
 	private final DatapacketType type;
 	private final Serializable value;

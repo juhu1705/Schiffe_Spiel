@@ -2,7 +2,7 @@ package schiffespiel.common.net.datapackets;
 
 import java.io.Serializable;
 
-import schiffespiel.common.util.Reference;
+import schiffespiel.common.util.Ref;
 
 
 /**
@@ -12,7 +12,7 @@ import schiffespiel.common.util.Reference;
  */
 public final class DatapacketVoid implements Serializable {
 
-	private static final long serialVersionUID = Reference.UNIVERSAL_SERIAL_VERSION_UID;
+	private static final long serialVersionUID = Ref.UNIVERSAL_SERIAL_VERSION_UID;
 	
 	private static DatapacketVoid vObj = new DatapacketVoid();
 	

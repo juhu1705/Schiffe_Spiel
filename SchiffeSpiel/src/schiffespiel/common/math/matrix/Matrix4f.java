@@ -2,7 +2,7 @@ package schiffespiel.common.math.matrix;
 
 import java.util.Arrays;
 
-import schiffespiel.common.util.Reference;
+import schiffespiel.common.util.Ref;
 import schiffespiel.common.util.Util;
 
 public class Matrix4f {
@@ -40,7 +40,7 @@ public class Matrix4f {
 	
 	@Override
 	protected Object clone() throws CloneNotSupportedException {
-		if(Reference.randGen.nextBoolean())
+		if(Ref.randGen.nextBoolean())
 			return new Matrix4f(this);
 		else
 			throw new CloneNotSupportedException("Funktioniert eh nicht!");

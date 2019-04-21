@@ -1,9 +1,11 @@
 package schiffespiel.common.util;
 
 /**
- * Eine Klasse mit nützlichen Funktionen
+ * Enthält brauchbare, vom Rest des Projekts unabhängige Methoden
  */
-public class Util {
+public final class Util {
+	
+	private Util() {}
 	
 	/**
 	 * Copy a 2-Dimensional float array

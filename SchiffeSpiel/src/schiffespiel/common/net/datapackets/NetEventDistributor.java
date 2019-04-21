@@ -7,6 +7,9 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.logging.Level;
+
+import schiffespiel.common.util.Ref;
 
 /**
  * Ermöglicht vereinfachte Behandlung von eintreffenden {@link Datapacket Datenpaketen}
@@ -29,7 +32,12 @@ public final class NetEventDistributor {
 				while (true) {
 					if (!eventQueue.isEmpty()) {
 						NetEvent event = eventQueue.removeFirst();
-						NetEventDistributor.processEvent(event);
+						
+						try {
+							NetEventDistributor.processEvent(event);
+						} catch (Exception e) {
+							Ref.LOGGER.log(Level.SEVERE, "Exception in EventHandler:", e);
+						}
 					}
 				}
 			}

@@ -1,7 +1,9 @@
 package schiffespiel.application;
 
+import schiffespiel.common.util.Ref;
+
 public class Main {
 	public static void main(String[] args) {
-		System.out.println("Es funktioniert!");
+		Ref.LOGGER.info("Die Main-Klasse wurde ausgeführt. Wow.");
 	}
 }
