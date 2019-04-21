@@ -22,6 +22,8 @@ public final class Ref {
 	 */
 	public static final Random randGen = new Random();
 	
+	public static final int STANDARD_HOST_PORT = 18419;
+	
 	/**
 	 * Universeller Logger. Diesen bitte statt System.out.println() benutzen.
 	 */
