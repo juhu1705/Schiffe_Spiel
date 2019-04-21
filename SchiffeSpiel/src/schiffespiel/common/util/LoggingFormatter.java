@@ -17,7 +17,7 @@ class LoggingFormatter extends Formatter {
 	public String format(LogRecord record) {
 		
 		String result = "[" + LocalDateTime.now().format(dateTimeFormatter) + "] [" + record.getLevel()
-		+ " in " + record.getSourceClassName() + "] " + record.getMessage() + "\n";
+		+ " | " + record.getSourceClassName() + "] " + record.getMessage() + "\n";
 		
 		Throwable thrown = record.getThrown();
 		if (thrown != null) result += thrown + "\n";

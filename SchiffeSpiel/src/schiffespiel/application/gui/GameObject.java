@@ -1,4 +1,4 @@
-package schiffespiel.application.annotations;
+package schiffespiel.application.gui;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
