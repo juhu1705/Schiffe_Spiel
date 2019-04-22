@@ -10,7 +10,7 @@ import schiffespiel.common.net.Side;
  */
 public enum DatapacketType {
 	
-	;
+	TEST(Side.SERVER, String.class);
 	
 	private final Class<? extends Serializable> requiredValueType;
 	private final Side senderSide;

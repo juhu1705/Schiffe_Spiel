@@ -16,13 +16,24 @@ class LoggingFormatter extends Formatter {
 	@Override
 	public String format(LogRecord record) {
 		
-		String result = "[" + LocalDateTime.now().format(dateTimeFormatter) + "] [" + record.getLevel()
-		+ " | " + record.getSourceClassName() + "] " + record.getMessage() + "\n";
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("[" + LocalDateTime.now().format(dateTimeFormatter) + "] [" + record.getLevel()
+		+ " | " + record.getSourceClassName() + "] " + record.getMessage() + "\n");
 		
 		Throwable thrown = record.getThrown();
-		if (thrown != null) result += thrown + "\n";
+		if (thrown != null) {
+			sb.append(thrown);
+			sb.append("\n");
+			
+			for (StackTraceElement ste : thrown.getStackTrace()) {
+				sb.append("    at ");
+				sb.append(ste);
+				sb.append("\n");
+			}
+		}
 		
-		return result;
+		return sb.toString();
 	}
 	
 }
