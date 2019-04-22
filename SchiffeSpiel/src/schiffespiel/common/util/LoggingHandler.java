@@ -14,7 +14,7 @@ public class LoggingHandler extends Handler {
 	public void publish(LogRecord record) {
 		String output = this.getFormatter().format(record);
 		
-		if (record.getLevel() == Level.SEVERE)
+		if (record.getLevel().intValue() >= Level.WARNING.intValue())
 			System.err.print(output);
 		else
 			System.out.print(output);
