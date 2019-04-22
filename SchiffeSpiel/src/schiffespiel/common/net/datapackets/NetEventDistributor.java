@@ -24,19 +24,22 @@ public final class NetEventDistributor {
 	private static LinkedList<NetEvent> eventQueue = new LinkedList<>();
 	
 	private static Thread eventRunner;
+	private static boolean processing = false;
 	
 	static {
 		NetEventDistributor.eventRunner = new Thread(new Runnable() {
 			@Override
 			public void run() {
-				while (true) {
+				while (processing) {
 					if (!eventQueue.isEmpty()) {
 						NetEvent event = eventQueue.removeFirst();
 						
 						try {
 							NetEventDistributor.processEvent(event);
-						} catch (Exception e) {
-							Ref.LOGGER.log(Level.SEVERE, "Exception in EventHandler:", e);
+						} catch (InvocationTargetException e) {
+							Ref.LOGGER.log(Level.SEVERE, "Exception in EventHandler:", e.getCause());
+						} catch (IllegalAccessException | IllegalArgumentException e) {
+							e.printStackTrace();
 						}
 					}
 				}
@@ -112,10 +115,27 @@ public final class NetEventDistributor {
 	 * @param event das hinzuzufügende Event
 	 */
 	public static void addEventToQueue(NetEvent event) {
-		// eventRunner starten, falls noch nicht gestartet
-		if (!NetEventDistributor.eventRunner.isAlive()) NetEventDistributor.eventRunner.start();
-		
 		NetEventDistributor.eventQueue.addLast(event);
+	}
+	
+	
+	/**
+	 * Startet den EventRunner, sodass Events verarbeitet werden können
+	 * @see #stopProcessing()
+	 */
+	public static void startProcessing() {
+		// eventRunner starten
+		if (!NetEventDistributor.eventRunner.isAlive()) NetEventDistributor.eventRunner.start();
+		NetEventDistributor.processing = true;
+	}
+	
+	
+	/**
+	 * Stoppt den EventRunner
+	 * @see #startProcessing()
+	 */
+	public static void stopProcessing() {
+		NetEventDistributor.processing = false;
 	}
 	
 	
@@ -124,17 +144,16 @@ public final class NetEventDistributor {
 	 * 
 	 * @param dp Datenpaket
 	 * @param sender Datenpaketsender
+	 * @throws IllegalArgumentException 
+	 * @throws IllegalAccessException 
+	 * @throws InvocationTargetException 
 	 */
-	private static void processEvent(NetEvent event) {
+	private static void processEvent(NetEvent event) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		Datapacket dp = event.getDatapacket();
 		
 		for (Entry<Method, DatapacketType> e : NetEventDistributor.eventHandlers.entrySet()) {
 			if (e.getValue() == dp.getType()) {
-				try {
-					e.getKey().invoke(null, dp.getType().getRequiredValueType().cast(dp.getValue()), event.getSender());
-				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException exc) {
-					exc.printStackTrace();
-				}
+				e.getKey().invoke(null, dp.getType().getRequiredValueType().cast(dp.getValue()), event.getSender());
 			}
 		}
 	}
