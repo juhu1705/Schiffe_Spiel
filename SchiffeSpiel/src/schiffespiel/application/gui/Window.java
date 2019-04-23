@@ -43,7 +43,7 @@ private static Window instance;
 	private int width, height;
 	private boolean isFullScreen, isCursorHidden;
 	
-	public static Window getInstance()	{
+	public static Window getInstance() {
 		return instance != null ? instance : (instance = new Window());
 	}
 	
@@ -51,15 +51,15 @@ private static Window instance;
 		
 	}
 	
-	public long getWindow()	{
+	public long getWindow() {
 		return this.window;
 	}
 	
-	public void setWindow(long window)	{
+	public void setWindow(long window) {
 		this.window = window;
 	}
 	
-	public void init()	{
+	public void init() {
 		
 	}
 	
@@ -67,42 +67,42 @@ private static Window instance;
         glClearColor(r, g, b, alpha);
     }
 	
-	public boolean isFullScreen()	{
+	public boolean isFullScreen() {
 		return this.isFullScreen;
 	}
 	
-	public int getWidth()	{
+	public int getWidth() {
 		return !isFullScreen ? this.width : glfwGetVideoMode(glfwGetPrimaryMonitor()).width();
 	}
 	
-	public int getHeight()	{
+	public int getHeight() {
 		return !isFullScreen ? this.height : glfwGetVideoMode(glfwGetPrimaryMonitor()).height();
 	}
 	
-	public void fullScreen()	{
+	public void fullScreen() {
 		this.isFullScreen = true;
 		setWindowSize(getWidth(), getHeight());
 	}
 	
-	public void resizeToNormal()	{
+	public void resizeToNormal() {
 		setSize(this.width, this.height);
 	}
 	
-	public void setSize(int width, int height)	{
+	public void setSize(int width, int height) {
 		this.isFullScreen = false;
 		setWindowSize(width, height);
 	}
 	
-	public void create(int width, int height)	{
+	public void create(int width, int height) {
 		long startTime = System.nanoTime();
 		this.width = width;
 		this.height = height;
 		this.isFullScreen = false;
 		
-		glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);	
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);	
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);	
-		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);	
+		glfwWindowHint(GLFW_RESIZABLE, GL_TRUE); 
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4); 
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3); 
+		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); 
 		
 		window = glfwCreateWindow(width, height, "Five Swords", 0, 0);
 		
@@ -145,38 +145,38 @@ private static Window instance;
 		System.out.println("Create Window in " + (System.nanoTime() - startTime) + " nanoseconds.");
 	}
 	
-	public void render()	{
+	public void render() {
 		glfwSwapBuffers(window);
 	}
 	
-	public void dispose()	{
+	public void dispose() {
 		glfwDestroyWindow(window);
 	}
 	
-	public boolean isCloseRequested()	{
+	public boolean isCloseRequested() {
 		return glfwWindowShouldClose(window);
 	}
 	
-	public boolean isCursorShown()	{
+	public boolean isCursorShown() {
 		return !this.isCursorHidden;
 	}
 	
-	public boolean isCursorHidden()	{
+	public boolean isCursorHidden() {
 		return this.isCursorHidden;
 	}
 	
-	public void setNoramlCursor()	{
+	public void setNoramlCursor() {
 		this.isCursorHidden = false;
 		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 		glfwSetCursor(this.window, this.cursor);
 	}
 	
-	public void hideCursor()	{
+	public void hideCursor() {
 		this.isCursorHidden = true;
 		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 	}
 	
-	private void setWindowSize(int width, int height)	{
+	private void setWindowSize(int width, int height) {
 		glfwSetWindowSize(window, width, height);
 		glViewport(0, 0, width, height);
 		glfwMakeContextCurrent(window);

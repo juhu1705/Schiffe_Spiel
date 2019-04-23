@@ -13,11 +13,11 @@ public final class Util {
 	 * @return A copy of the toCopy Array
 	 * @author Juhu1705
 	 */
-	public static float[][] copy2dFloatArray(float[][] toCopy)	{
+	public static float[][] copy2dFloatArray(float[][] toCopy) {
 		float[][] newArray = new float[toCopy.length][];
-		for(int i = 0; i < toCopy.length; i++)	{
+		for(int i = 0; i < toCopy.length; i++) {
 			newArray[i] = new float[toCopy[i].length];
-			for(int y = 0; y < toCopy[i].length; y++)	{
+			for(int y = 0; y < toCopy[i].length; y++) {
 				newArray[i] [y] = toCopy[i][y];
 			}
 		}

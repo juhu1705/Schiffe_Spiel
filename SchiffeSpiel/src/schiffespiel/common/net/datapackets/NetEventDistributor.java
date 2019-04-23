@@ -12,8 +12,8 @@ import java.util.logging.Level;
 import schiffespiel.common.util.Ref;
 
 /**
- * Ermöglicht vereinfachte Behandlung von eintreffenden {@link Datapacket Datenpaketen}
- * Verwaltet {@link NetEventHandler} und die EventQueue
+ * Ermöglicht vereinfachte Behandlung von eintreffenden {@link Datapacket Datenpaketen}.
+ * Verwaltet {@link NetEventHandler} und die EventQueue.
  * 
  * @author Niklas
  */

@@ -16,7 +16,7 @@ public class Vec3f {
 	/**
 	 * Creates a Null-Vector
 	 */
-	public Vec3f()	{
+	public Vec3f() {
 		this.x = 0.0f;
 		this.y = 0.0f;
 		this.z = 0.0f;
@@ -26,7 +26,7 @@ public class Vec3f {
 	 * x, y, z coordinates set to f
 	 * @param f A float value
 	 */
-	public Vec3f(float f)	{
+	public Vec3f(float f) {
 		this.x = f;
 		this.y = f;
 		this.z = f;
@@ -38,7 +38,7 @@ public class Vec3f {
 	 * @param y
 	 * @param z
 	 */
-	public Vec3f(float x, float y, float z)	{
+	public Vec3f(float x, float y, float z) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
@@ -49,7 +49,7 @@ public class Vec3f {
 	 * @param vec2f
 	 * @param z
 	 */
-	public Vec3f(Vec2f vec2f, float z)	{
+	public Vec3f(Vec2f vec2f, float z) {
 		this.x = vec2f.x;
 		this.y = vec2f.y;
 		this.z = z;
@@ -77,7 +77,7 @@ public class Vec3f {
 	 * Normalize the vector
 	 * @return this
 	 */
-	public Vec3f normalize()	{
+	public Vec3f normalize() {
 		float length = this.getLength();
 		
 		this.x /= length;
@@ -92,7 +92,7 @@ public class Vec3f {
 	 * @param vec3f The vector to multiply this vector with.
 	 * @return A new Vec3f with the multiplied data.
 	 */
-	public Vec3f mul(Vec3f vec3f)	{
+	public Vec3f mul(Vec3f vec3f) {
 		return new Vec3f(x * vec3f.x, y * vec3f.y, z * vec3f.z);
 	}
 	
@@ -101,7 +101,7 @@ public class Vec3f {
 	 * @param f The float to multiply this vector with.
 	 * @return A new Vec3f with the multiplied data.
 	 */
-	public Vec3f mul(float f)	{
+	public Vec3f mul(float f) {
 		return new Vec3f(x * f, y * f, z * f);
 	}
 	
@@ -110,7 +110,7 @@ public class Vec3f {
 	 * @param vec3f The vec3f to divide this vec3f with
 	 * @return A new vec3f with divided values
 	 */
-	public Vec3f div(Vec3f vec3f)	{
+	public Vec3f div(Vec3f vec3f) {
 		return new Vec3f(x / vec3f.x, y / vec3f.y, z / vec3f.z);
 	}
 	
@@ -119,7 +119,7 @@ public class Vec3f {
 	 * @param f The float to divide this vec3f with
 	 * @return A new vec3f with divided values
 	 */
-	public Vec3f div(float f)	{
+	public Vec3f div(float f) {
 		return new Vec3f(x / f, y / f, z / f);
 	}
 	
@@ -128,7 +128,7 @@ public class Vec3f {
 	 * @param vec3f The vec3f to subtract this vec3f with
 	 * @return A new Vec3f with subtracted values
 	 */
-	public Vec3f sub(Vec3f vec3f)	{
+	public Vec3f sub(Vec3f vec3f) {
 		return new Vec3f(x - vec3f.x, y - vec3f.y, z - vec3f.z);
 	}
 	
@@ -137,7 +137,7 @@ public class Vec3f {
 	 * @param f The float to subtract this vec3f with
 	 * @return A new Vec3f with subtracted values
 	 */
-	public Vec3f sub(float f)	{
+	public Vec3f sub(float f) {
 		return new Vec3f(x - f, y - f, z - f);
 	}
 	
@@ -146,7 +146,7 @@ public class Vec3f {
 	 * @param vec3f The vec3f to add to this vec3f
 	 * @return A new Vec3f with added values
 	 */
-	public Vec3f add(Vec3f vec3f)	{
+	public Vec3f add(Vec3f vec3f) {
 		return new Vec3f(x + vec3f.x, y + vec3f.y, z + vec3f.z);
 	}
 	
@@ -155,7 +155,7 @@ public class Vec3f {
 	 * @param f The float to add to this vec3f
 	 * @return A new Vec3f with added values
 	 */
-	public Vec3f add(float f)	{
+	public Vec3f add(float f) {
 		return new Vec3f(x + f, y + f, z + f);
 	}
 	
@@ -164,7 +164,7 @@ public class Vec3f {
 	 * @param vec3f The vec3f to modulo this vec3f with
 	 * @return A new Vec3f with modulo values
 	 */
-	public Vec3f mod(Vec3f vec3f)	{
+	public Vec3f mod(Vec3f vec3f) {
 		return new Vec3f(x % vec3f.x, y % vec3f.y, z % vec3f.z);
 	}
 	
@@ -173,7 +173,7 @@ public class Vec3f {
 	 * @param f The float to modulo this vec3f with
 	 * @return A new Vec3f with modulo values
 	 */
-	public Vec3f mod(float f)	{
+	public Vec3f mod(float f) {
 		return new Vec3f(x % f, y % f, z % f);
 	}
 	
