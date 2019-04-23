@@ -14,7 +14,7 @@ import schiffespiel.common.util.Ref;
 /**
  * Ermöglicht vereinfachte Behandlung von eintreffenden {@link Datapacket Datenpaketen}.
  * Verwaltet {@link NetEventHandler} und die EventQueue.
- * 
+ *
  * @author Niklas
  */
 public final class NetEventDistributor {
@@ -56,7 +56,7 @@ public final class NetEventDistributor {
 	
 	/**
 	 * Registriert alle mit {@link NetEventHandler} annotiierten Methoden der Klasse {@code eventListener}
-	 * 
+	 *
 	 * @param eventListener Klasse, deren {@link NetEventHandler}-Methoden registriert werden sollen
 	 * @see #registerEventHandler(Method)
 	 */
@@ -71,7 +71,7 @@ public final class NetEventDistributor {
 	
 	/**
 	 * Registriert eine Methode als EventHandler. <br><br>
-	 * 
+	 *
 	 * Diese muss folgende Bedingungen erfüllen:<br>
 	 * - muss die Annotation {@link NetEventHandler} enthalten<br>
 	 * - muss statisch sein<br>
@@ -80,7 +80,7 @@ public final class NetEventDistributor {
 	 * <li>Ein Parameter, über den der Datenpaket-Wert ({@code value}) übergeben wird</li>
 	 * <li>Ein Parameter, über den der {@link DatapacketSender} übergeben wird</li>
 	 * </ol>
-	 * 
+	 *
 	 * @param eventHandler EventHandler-Methode
 	 * @throws IllegalArgumentException wenn eine der oben genannten Bedingungen nicht erfüllt ist
 	 * @see #registerEventHandlers(Class)
@@ -141,12 +141,12 @@ public final class NetEventDistributor {
 	
 	/**
 	 * Ruft ein Datenpaket-Event auf
-	 * 
+	 *
 	 * @param dp Datenpaket
 	 * @param sender Datenpaketsender
-	 * @throws IllegalArgumentException 
-	 * @throws IllegalAccessException 
-	 * @throws InvocationTargetException 
+	 * @throws IllegalArgumentException
+	 * @throws IllegalAccessException
+	 * @throws InvocationTargetException
 	 */
 	private static void processEvent(NetEvent event) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		Datapacket dp = event.getDatapacket();

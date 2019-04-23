@@ -33,7 +33,7 @@ public class Vec3f {
 	}
 	
 	/**
-	 * Sets x, y and z to x, y and z 
+	 * Sets x, y and z to x, y and z
 	 * @param x
 	 * @param y
 	 * @param z
@@ -66,7 +66,7 @@ public class Vec3f {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return Length of the vector
 	 */
 	public float getLength() {

@@ -7,7 +7,7 @@ import schiffespiel.common.util.Ref;
 
 /**
  * Dummy-Klasse zum Versenden als Typ in einem {@link Datapacket}
- * 
+ *
  * @author Niklas
  */
 public final class DatapacketVoid implements Serializable {

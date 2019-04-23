@@ -57,7 +57,7 @@ public class ConnectionHandler implements Runnable, DatapacketSender {
 	
 	/**
 	 * Sendet ein Datenpaket zum Server
-	 * 
+	 *
 	 * @param dp zu sendendes Datenpaket
 	 * @throws IOException falls das Senden fehlschlägt
 	 */

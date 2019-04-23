@@ -31,7 +31,7 @@ public class Vec2f {
 	}
 	
 	/**
-	 * Sets x, y to x, y 
+	 * Sets x, y to x, y
 	 * @param x
 	 * @param y
 	 */
@@ -50,7 +50,7 @@ public class Vec2f {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return Length of the vector
 	 */
 	public float getLength() {

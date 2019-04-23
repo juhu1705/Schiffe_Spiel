@@ -35,7 +35,7 @@ public class Vec4f {
 	}
 	
 	/**
-	 * Sets x, y, z and w to x, y, z and w 
+	 * Sets x, y, z and w to x, y, z and w
 	 * @param x
 	 * @param y
 	 * @param z
@@ -72,7 +72,7 @@ public class Vec4f {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return Length of the vector
 	 */
 	public float getLength() {
