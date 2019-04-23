@@ -16,7 +16,7 @@ public class Vec2f {
 	/**
 	 * Creates a Null-Vector
 	 */
-	public Vec2f()	{
+	public Vec2f() {
 		this.x = 0.0f;
 		this.y = 0.0f;
 	}
@@ -25,17 +25,17 @@ public class Vec2f {
 	 * x, y coordinates set to f
 	 * @param f A float value
 	 */
-	public Vec2f(float f)	{
+	public Vec2f(float f) {
 		this.x = f;
 		this.y = f;
 	}
 	
 	/**
-	 * Sets x, y to x, y 
+	 * Sets x, y to x, y
 	 * @param x
 	 * @param y
 	 */
-	public Vec2f(float x, float y)	{
+	public Vec2f(float x, float y) {
 		this.x = x;
 		this.y = y;
 	}
@@ -50,7 +50,7 @@ public class Vec2f {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return Length of the vector
 	 */
 	public float getLength() {
@@ -61,7 +61,7 @@ public class Vec2f {
 	 * Normalize the vector
 	 * @return this
 	 */
-	public Vec2f normalize()	{
+	public Vec2f normalize() {
 		float length = this.getLength();
 		
 		this.x /= length;
@@ -75,7 +75,7 @@ public class Vec2f {
 	 * @param vec2f The vector to multiply this vector with.
 	 * @return A new Vec2f with the multiplied data.
 	 */
-	public Vec2f mul(Vec2f vec2f)	{
+	public Vec2f mul(Vec2f vec2f) {
 		return new Vec2f(x * vec2f.x, y * vec2f.y);
 	}
 	
@@ -84,7 +84,7 @@ public class Vec2f {
 	 * @param f The float to multiply this vector with.
 	 * @return A new Vec2f with the multiplied data.
 	 */
-	public Vec2f mul(float f)	{
+	public Vec2f mul(float f) {
 		return new Vec2f(x * f, y * f);
 	}
 	
@@ -93,7 +93,7 @@ public class Vec2f {
 	 * @param vec2f The Vec2f to divide this Vec2f with
 	 * @return A new Vec2f with divided values
 	 */
-	public Vec2f div(Vec2f vec2f)	{
+	public Vec2f div(Vec2f vec2f) {
 		return new Vec2f(x / vec2f.x, y / vec2f.y);
 	}
 	
@@ -102,7 +102,7 @@ public class Vec2f {
 	 * @param f The float to divide this Vec2f with
 	 * @return A new Vec2f with divided values
 	 */
-	public Vec2f div(float f)	{
+	public Vec2f div(float f) {
 		return new Vec2f(x / f, y / f);
 	}
 	
@@ -111,7 +111,7 @@ public class Vec2f {
 	 * @param vec2f The Vec2f to subtract this Vec2f with
 	 * @return A new Vec2f with subtracted values
 	 */
-	public Vec2f sub(Vec2f vec2f)	{
+	public Vec2f sub(Vec2f vec2f) {
 		return new Vec2f(x - vec2f.x, y - vec2f.y);
 	}
 	
@@ -120,7 +120,7 @@ public class Vec2f {
 	 * @param f The float to subtract this Vec2f with
 	 * @return A new Vec2f with subtracted values
 	 */
-	public Vec2f sub(float f)	{
+	public Vec2f sub(float f) {
 		return new Vec2f(x - f, y - f);
 	}
 	
@@ -129,7 +129,7 @@ public class Vec2f {
 	 * @param vec2f The Vec2f to add to this Vec2f
 	 * @return A new Vec2f with added values
 	 */
-	public Vec2f add(Vec2f vec2f)	{
+	public Vec2f add(Vec2f vec2f) {
 		return new Vec2f(x + vec2f.x, y + vec2f.y);
 	}
 	
@@ -138,7 +138,7 @@ public class Vec2f {
 	 * @param f The float to add to this Vec2f
 	 * @return A new Vec2f with added values
 	 */
-	public Vec2f add(float f)	{
+	public Vec2f add(float f) {
 		return new Vec2f(x + f, y + f);
 	}
 	
@@ -147,7 +147,7 @@ public class Vec2f {
 	 * @param vec2f The Vec2f to modulo this Vec2f with
 	 * @return A new Vec2f with modulo values
 	 */
-	public Vec2f mod(Vec2f vec2f)	{
+	public Vec2f mod(Vec2f vec2f) {
 		return new Vec2f(x % vec2f.x, y % vec2f.y);
 	}
 	
@@ -156,7 +156,7 @@ public class Vec2f {
 	 * @param f The float to modulo this Vec2f with
 	 * @return A new Vec2f with modulo values
 	 */
-	public Vec2f mod(float f)	{
+	public Vec2f mod(float f) {
 		return new Vec2f(x % f, y % f);
 	}
 	
