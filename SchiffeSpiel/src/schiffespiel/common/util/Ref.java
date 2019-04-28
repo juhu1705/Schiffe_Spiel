@@ -24,6 +24,8 @@ public final class Ref {
 	
 	public static final int STANDARD_HOST_PORT = 18419;
 	
+	public static final int GRAV = 10;
+	
 	/**
 	 * Universeller Logger. Diesen bitte statt System.out.println() benutzen.
 	 */
