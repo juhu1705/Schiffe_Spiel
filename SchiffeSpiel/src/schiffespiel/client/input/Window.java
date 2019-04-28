@@ -1,4 +1,4 @@
-package schiffespiel.application.gui;
+package schiffespiel.client.input;
 
 import static org.lwjgl.glfw.GLFW.GLFW_CONTEXT_VERSION_MAJOR;
 import static org.lwjgl.glfw.GLFW.GLFW_CONTEXT_VERSION_MINOR;
@@ -33,6 +33,7 @@ import org.lwjgl.glfw.GLFWImage;
 import org.lwjgl.opengl.GL;
 
 import schiffespiel.common.util.ImageLoader;
+import schiffespiel.common.util.Ref;
 
 
 public class Window {
@@ -104,7 +105,7 @@ private static Window instance;
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 		
-		window = glfwCreateWindow(width, height, "Five Swords", 0, 0);
+		window = glfwCreateWindow(width, height, "Schiffe Spiel", 0, 0);
 		
 		if(window == 0) {
 		    throw new RuntimeException("Failed to create window");
@@ -142,7 +143,7 @@ private static Window instance;
 		
 		this.isCursorHidden = false;
 		
-		System.out.println("Create Window in " + (System.nanoTime() - startTime) + " nanoseconds.");
+		Ref.LOGGER.info("Create Window in " + (System.nanoTime() - startTime) + " nanoseconds.");
 	}
 	
 	public void render() {
