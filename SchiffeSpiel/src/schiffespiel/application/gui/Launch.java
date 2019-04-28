@@ -9,9 +9,11 @@ import org.lwjgl.opengl.GL31;
 import org.lwjgl.opengl.GL40;
 import org.lwjgl.opengl.GL43;
 
+import schiffespiel.client.engines.launch.LaunchStatusRenderer;
+import schiffespiel.client.input.Window;
 import schiffespiel.common.util.Ref;
 
-public class Launch {
+public class Launch implements Runnable {
 
 	public static GLFWErrorCallback errorCallback;
 	
@@ -23,7 +25,11 @@ public class Launch {
 		Window.getInstance().create(width, height);
 		
 		this.getDeviceProperties();
+		
+		new LaunchStatusRenderer().run();
 	}
+	
+	
 	
 	private void getDeviceProperties(){
 		Ref.LOGGER.info("OpenGL version: " + GL11.glGetString(GL11.GL_VERSION) + " bytes");
@@ -32,6 +38,14 @@ public class Launch {
 		Ref.LOGGER.info("Max Uniform Buffer Bindings: " + GL31.GL_MAX_UNIFORM_BUFFER_BINDINGS + " bytes");
 		Ref.LOGGER.info("Max Uniform Block Size: " + GL31.GL_MAX_UNIFORM_BLOCK_SIZE + " bytes");
 		Ref.LOGGER.info("Max SSBO Block Size: " + GL43.GL_MAX_SHADER_STORAGE_BLOCK_SIZE + " bytes");		
+	}
+
+
+
+	@Override
+	public void run() {
+		Launch launch = new Launch();
+		launch.createWindow(800, 800);
 	}
 	
 	

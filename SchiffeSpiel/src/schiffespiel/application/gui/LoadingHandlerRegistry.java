@@ -9,6 +9,8 @@ public class LoadingHandlerRegistry {
 
 	private static ArrayList<Class<?>> loadingHandlers = new ArrayList<Class<?>>();
 	
+	private static ArrayList<Class<?>> clientLoadingHandlers = new ArrayList<Class<?>>();
+	
 	public static void registerLoadingHandlerClass(Class<?> c) {
 		LoadingHandler annotation = c.getAnnotation(LoadingHandler.class);
 		if(annotation == null) throw new IllegalArgumentException("Angebene Klasse hat keine loadingHandler Annotation!");

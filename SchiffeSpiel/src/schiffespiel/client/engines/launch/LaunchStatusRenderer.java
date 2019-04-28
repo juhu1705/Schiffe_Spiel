@@ -1,16 +1,18 @@
 package schiffespiel.client.engines.launch;
 
 import static org.lwjgl.glfw.GLFW.glfwTerminate;
+import static org.lwjgl.glfw.GLFW.glfwInit;
 
-import schiffespiel.application.gui.Window;
+import schiffespiel.client.input.Input;
+import schiffespiel.client.input.Window;
+import schiffespiel.common.util.Ref;
 
-public class LaunchStatusRenderer implements Runnable {
-
+public class LaunchStatusRenderer {
+	
 	private static float fps;
 	private static float framerate = 200, frameTime = 1.0f / framerate;
 	private boolean isRunning;
 	
-	@Override
 	public void run() {
 		this.isRunning = true;
 		
@@ -54,18 +56,19 @@ public class LaunchStatusRenderer implements Runnable {
 				}
 			}
 		}
+		this.close();
 	}
 	
-	private void stop()	{
-		this.isRunning = !this.isRunning ? isRunning : false;
+	public void stop()	{
+		this.isRunning = false;
 	}
 	
 	private void render()	{
-		
+		Window.getInstance().render();
 	}
 	
 	private void update()	{
-		//TODO Input.getInstance().update();
+		Input.getInstance().update();
 	}
 	
 	private void close()	{
