@@ -15,7 +15,7 @@ public class LoadingHandlerRegistry {
 		LoadingHandler annotation = c.getAnnotation(LoadingHandler.class);
 		if(annotation == null) throw new IllegalArgumentException("Angebene Klasse hat keine loadingHandler Annotation!");
 		boolean isRunnable = false;
-		for(Method m: c.getMethods())	{
+		for(Method m: c.getMethods()) {
 			isRunnable = isRunnable || m.getName().equals("register");
 		}
 		if(!isRunnable) throw new IllegalArgumentException("Angegebene Klasse Verfügt nicht über benötigte Methoden!");

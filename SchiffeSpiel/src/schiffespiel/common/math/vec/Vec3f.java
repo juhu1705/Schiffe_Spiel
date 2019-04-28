@@ -73,7 +73,7 @@ public class Vec3f implements Serializable {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return Length of the vector
 	 */
 	public float getLength() {

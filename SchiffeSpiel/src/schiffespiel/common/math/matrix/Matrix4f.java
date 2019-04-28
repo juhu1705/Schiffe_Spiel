@@ -3,6 +3,7 @@ package schiffespiel.common.math.matrix;
 import java.io.Serializable;
 
 import schiffespiel.common.math.vec.Vec3f;
+import schiffespiel.common.util.Ref;
 import schiffespiel.common.util.Util;
 
 /**
@@ -20,12 +21,14 @@ public class Matrix4f implements Serializable {
 	 */
 	public float[][] m;
 
+
 	/**
 	 * Instance a empty Matrix
 	 */
 	public Matrix4f() {
 		this.m = new float[4][4];
 	}
+
 
 	/**
 	 * 
@@ -34,6 +37,7 @@ public class Matrix4f implements Serializable {
 	public Matrix4f(Matrix4f matrix) {
 		this.m = Util.copy2dFloatArray(matrix.m);
 	}
+
 
 	/**
 	 * 
@@ -68,6 +72,7 @@ public class Matrix4f implements Serializable {
 		return this;
 	}
 
+
 	public Matrix4f identity() {
 
 		this.m[0][0] = 1;
@@ -95,7 +100,7 @@ public class Matrix4f implements Serializable {
 	protected Object clone() throws CloneNotSupportedException {
 		return new Matrix4f(this);
 	}
-
+	
 	@Override
 	public String toString() {
 		return "[" + this.m[0][0] + "|" + this.m[0][1] + "|" + this.m[0][2] + "|" + this.m[0][3] + "]" + "\n" + "["

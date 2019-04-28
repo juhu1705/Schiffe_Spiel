@@ -21,7 +21,7 @@ public class LaunchStatusRenderer {
 		double unprocessedTime = 0;
 		
 		//GameLoop for Rendering
-		while(this.isRunning)	{
+		while(this.isRunning) {
 			boolean render = false;
 			
 			long startTime = System.nanoTime(), passedTime = startTime - lastTime;
@@ -30,28 +30,28 @@ public class LaunchStatusRenderer {
 			unprocessedTime += passedTime / (double) 1000000000; //TODO Constants.nanoseconds
 			frameCounter += passedTime;
 			
-			while(unprocessedTime > frameTime)	{
+			while(unprocessedTime > frameTime) {
 				render = true;
 				unprocessedTime -= frameTime;
 				
-				if(Window.getInstance().isCloseRequested())	this.stop();
+				if(Window.getInstance().isCloseRequested()) this.stop();
 				
 				this.update();
 				
-				if(frameCounter >= 1000000000)	{ //TODO Constants.nanoseconds
+				if(frameCounter >= 1000000000) { //TODO Constants.nanoseconds
 					fps = frames;
 					frames = 0;
 					frameCounter = 0;
 				}
 			}
 			
-			if(render)	{
+			if(render) {
 				this.render();
 				frames++;
-			}	else	{
-				try	{
+			} else {
+				try {
 					Thread.sleep(10);
-				}	catch(InterruptedException e)	{
+				} catch(InterruptedException e) {
 					e.printStackTrace();
 				}
 			}
@@ -71,7 +71,7 @@ public class LaunchStatusRenderer {
 		Input.getInstance().update();
 	}
 	
-	private void close()	{
+	private void close() {
 		Window.getInstance().dispose();
 		glfwTerminate();
 	}
