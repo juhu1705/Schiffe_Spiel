@@ -9,23 +9,24 @@ import java.util.logging.Logger;
  * Enthält Referenzvariablen
  */
 public final class Ref {
-	
-	private Ref() {}
-	
+
+	private Ref() {
+	}
+
 	/**
 	 * Standard Seriellversion-ID
 	 */
 	public static final long UNIVERSAL_SERIAL_VERSION_UID = -1208340591720468638L;
-	
+
 	/**
 	 * Universeller Zufallsgenerator
 	 */
-	public static final Random randGen = new Random();
-	
+	public static final Random RAND_GEN = new Random();
+
 	public static final int STANDARD_HOST_PORT = 18419;
-	
+
 	public static final int GRAV = 10;
-	
+
 	/**
 	 * Universeller Logger. Diesen bitte statt System.out.println() benutzen.
 	 */
@@ -39,5 +40,5 @@ public final class Ref {
 		LOGGER.addHandler(handler);
 		LOGGER.setLevel(Level.ALL);
 	}
-	
+
 }
