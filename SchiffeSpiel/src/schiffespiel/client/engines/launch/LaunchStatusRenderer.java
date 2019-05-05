@@ -5,6 +5,7 @@ import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
 import static org.lwjgl.opengl.GL11.GL_DEPTH_BUFFER_BIT;
 import static org.lwjgl.opengl.GL11.glClear;
 import static org.lwjgl.opengl.GL11.glClearColor;
+import static schiffespiel.common.util.Constants.NANOSECONDS;
 
 import schiffespiel.client.input.Input;
 import schiffespiel.client.input.Window;
@@ -31,7 +32,7 @@ public class LaunchStatusRenderer {
 			long startTime = System.nanoTime(), passedTime = startTime - lastTime;
 			lastTime = startTime;
 
-			unprocessedTime += passedTime / (double) 1000000000; // TODO Constants.nanoseconds
+			unprocessedTime += passedTime / (double) NANOSECONDS;
 			frameCounter += passedTime;
 
 			while (unprocessedTime > frameTime) {
@@ -43,7 +44,7 @@ public class LaunchStatusRenderer {
 
 				this.update();
 
-				if (frameCounter >= 1000000000) { // TODO Constants.nanoseconds
+				if (frameCounter >= NANOSECONDS) {
 					fps = frames;
 					frames = 0;
 					frameCounter = 0;
