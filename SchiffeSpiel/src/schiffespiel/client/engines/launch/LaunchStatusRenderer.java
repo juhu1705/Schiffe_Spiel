@@ -7,6 +7,10 @@ import static org.lwjgl.opengl.GL11.glClear;
 import static org.lwjgl.opengl.GL11.glClearColor;
 import static schiffespiel.common.util.Constants.NANOSECONDS;
 
+import schiffespiel.client.engines.camera.Camera;
+import schiffespiel.client.engines.camera.FPCamera;
+import schiffespiel.client.engines.game.entity.Entity;
+import schiffespiel.client.engines.game.entity.Testing;
 import schiffespiel.client.input.Input;
 import schiffespiel.client.input.Window;
 
@@ -69,17 +73,33 @@ public class LaunchStatusRenderer {
 		this.isRunning = false;
 	}
 
+	Entity e;
+
 	private void init() {
+		FPCamera.useFPCamera();
+
 		glClearColor(0, 0.3f, 0.9f, 1.0f);
+
+		e = Testing.getStandatTest();
+
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void render() {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+		e.renderUsingShader();
+
 		Window.getInstance().render();
 	}
 
 	private void update() {
+		Camera.getInstance().update();
+
 		Input.getInstance().update();
 	}
 

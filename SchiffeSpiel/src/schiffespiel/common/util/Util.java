@@ -3,6 +3,7 @@ package schiffespiel.common.util;
 import java.nio.FloatBuffer;
 
 import org.joml.Matrix4f;
+import org.lwjgl.BufferUtils;
 
 /**
  * Enthält brauchbare, vom Rest des Projekts unabhängige Methoden
@@ -30,9 +31,24 @@ public final class Util {
 		return newArray;
 	}
 
-	public static FloatBuffer createFlippedBuffer(Matrix4f value) {
+	public static FloatBuffer createFloatBuffer(int size) {
+		return BufferUtils.createFloatBuffer(size);
+	}
 
-		return null;
+	public static FloatBuffer createFlippedBuffer(Matrix4f matrix) {
+		FloatBuffer buffer = createFloatBuffer(4 * 4);
+
+		float[] fa = new float[4 * 4];
+
+		matrix.get(fa);
+
+		for (float f : fa) {
+			buffer.put(f);
+		}
+
+		buffer.flip();
+
+		return buffer;
 	}
 
 }

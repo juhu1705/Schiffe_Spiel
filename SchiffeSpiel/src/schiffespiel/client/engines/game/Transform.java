@@ -21,8 +21,16 @@ public class Transform {
 
 	public Matrix4f getModelMatrix() {
 		Matrix4f positionMatrix = new Matrix4f().translate(this.position);
-		Matrix4f rotationMatrix = new Matrix4f().rotateXYZ(this.rotation);
+
+		Matrix4f rX = new Matrix4f().rotate(this.rotation.x(), new Vector3f(1, 0, 0));
+		Matrix4f rY = new Matrix4f().rotate(this.rotation.y(), new Vector3f(0, 1, 0));
+		Matrix4f rZ = new Matrix4f().rotate(this.rotation.z(), new Vector3f(0, 0, 1));
+
+		Matrix4f rotationMatrix = rX.mul(rZ.mul(rY));
 		Matrix4f scalingMatrix = new Matrix4f().scale(this.scaling);
+
+//		Ref.LOGGER.info("Debug: \n" + positionMatrix.toString() + "\n" + rotationMatrix.toString() + "\n"
+//				+ scalingMatrix.toString() + "\n" + positionMatrix.mul(rotationMatrix).toString() + "");
 
 		return positionMatrix.mul(rotationMatrix.mul(scalingMatrix));
 	}
@@ -33,6 +41,18 @@ public class Transform {
 
 	public Matrix4f getProjectionMatrix() {
 		return Camera.getInstance().getProjectionMatrix();
+	}
+
+	public Matrix4f getWorldMatrix() {
+		Matrix4f translationMatrix = new Matrix4f().translate(position);
+		Matrix4f rotationMatrix = new Matrix4f().rotateTowards(rotation, Camera.UP);
+		Matrix4f scalingMatrix = new Matrix4f().scale(scaling);
+
+		return translationMatrix.mul(scalingMatrix.mul(rotationMatrix));
+	}
+
+	public Matrix4f getViewProjectionMatrix() {
+		return Camera.getInstance().getViewMatrix().mul(Camera.getInstance().getProjectionMatrix());
 	}
 
 	/**

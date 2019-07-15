@@ -6,7 +6,7 @@ import org.joml.Vector3f;
 import schiffespiel.client.engines.game.Transform;
 import schiffespiel.client.interfaces.IModel;
 
-public abstract class Entity implements IModel {
+public class Entity implements IModel {
 
 	protected Shader shader;
 	protected Mesh mesh;
@@ -53,6 +53,10 @@ public abstract class Entity implements IModel {
 		this.setTransformUniformsToShader();
 		this.render();
 		this.shader.unbind();
+	}
+
+	public void update() {
+
 	}
 
 	public void render() {
